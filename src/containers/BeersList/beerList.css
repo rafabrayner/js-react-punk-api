@@ -1,0 +1,20 @@
+.root {
+  max-width: 345px;
+}
+.media {
+  height: 0px;
+  padding-top: 56.25%;
+  background-size: contain !important;
+}
+
+/*container*/
+.container {
+  width: 100%;
+  flex-wrap: wrap;
+  display: flex;
+  justify-content: center;
+}
+
+.m-1 {
+  margin: 0.5em;
+}
