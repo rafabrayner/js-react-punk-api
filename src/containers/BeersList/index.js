@@ -20,6 +20,7 @@ class BeersList extends Component {
   page = 1;
   perPage = 6;
   totalBeers = 325;
+  numberOfPages = Math.ceil(this.totalBeers/this.perPage);
   
   async getBeersList() {
     try {
@@ -76,7 +77,7 @@ class BeersList extends Component {
                       />
                       <CardMedia
                         className="media"
-                        image={image_url}
+                        image={image_url ? image_url : process.env.PUBLIC_URL + '/no-image-available-icon.jpg'}
                         title={tagline}
                       />
                       <CardContent>
@@ -90,7 +91,7 @@ class BeersList extends Component {
                     </Card>
                   </div>
                 ))}
-                <Pagination count={this.totalBeers} page={this.page} onChange={(event, value) => this.handlePageChange(value)} />
+                <Pagination count={this.numberOfPages} page={this.page} onChange={(event, value) => this.handlePageChange(value)} />
               </div>
             </>
           )}
