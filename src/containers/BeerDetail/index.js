@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import HttpService from '../../utils/HttpService'
 import Load from '../../components/load'
+import Wrapper from '../../components/wrapper';
 
 class BeerDetail extends Component {
 
@@ -39,9 +40,13 @@ class BeerDetail extends Component {
           <Load />
         ) : (
             <>
-              <div>
-                Carregou já
-              </div>
+              <Wrapper goBack={() => this.handleClickBack()}>
+                <div className="container">
+                  <div className="m-1">
+                    
+                  </div>
+                </div>
+              </Wrapper>
             </>
           )}
       </>

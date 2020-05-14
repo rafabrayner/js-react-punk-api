@@ -9,6 +9,7 @@ import Button from '@material-ui/core/Button';
 import Pagination from '@material-ui/lab/Pagination';
 import HttpService from '../../utils/HttpService';
 import Load from '../../components/load';
+import Wrapper from '../../components/wrapper';
 import './beerList.css';
 
 class BeersList extends Component {
@@ -67,32 +68,34 @@ class BeersList extends Component {
           <Load />
         ) : (
             <>
-              <div className="container">
-                {this.state.beers.map(({id, image_url, name, tagline, first_brewed, description}) => (
-                  <div className="m-1" key={id}>
-                    <Card className="root">
-                      <CardHeader
-                        title={name}
-                        subheader={"First Brewed " + first_brewed}
-                      />
-                      <CardMedia
-                        className="media"
-                        image={image_url ? image_url : process.env.PUBLIC_URL + '/no-image-available-icon.jpg'}
-                        title={tagline}
-                      />
-                      <CardContent>
-                        <Typography variant="body2" color="textSecondary" component="p">
-                          {description}
-                        </Typography>
-                      </CardContent>
-                      <CardActions disableSpacing>
-                        <Button variant="contained" color="primary" onClick={() => this.handleClickDetail(id)} >Detalhes do Produto</Button>
-                      </CardActions>
-                    </Card>
-                  </div>
-                ))}
-                <Pagination count={this.numberOfPages} page={this.page} onChange={(event, value) => this.handlePageChange(value)} />
-              </div>
+              <Wrapper>
+                <div className="container">
+                  {this.state.beers.map(({id, image_url, name, tagline, first_brewed, description}) => (
+                    <div className="m-1" key={id}>
+                      <Card className="root">
+                        <CardHeader
+                          title={name}
+                          subheader={"First Brewed " + first_brewed}
+                        />
+                        <CardMedia
+                          className="media"
+                          image={image_url ? image_url : process.env.PUBLIC_URL + '/no-image-available-icon.jpg'}
+                          title={tagline}
+                        />
+                        <CardContent>
+                          <Typography variant="body2" color="textSecondary" component="p">
+                            {description}
+                          </Typography>
+                        </CardContent>
+                        <CardActions disableSpacing>
+                          <Button variant="contained" color="primary" onClick={() => this.handleClickDetail(id)} >Detalhes do Produto</Button>
+                        </CardActions>
+                      </Card>
+                    </div>
+                  ))}
+                  <Pagination count={this.numberOfPages} page={this.page} onChange={(event, value) => this.handlePageChange(value)} />
+                </div>
+              </Wrapper>
             </>
           )}
       </>

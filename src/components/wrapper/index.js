@@ -10,12 +10,17 @@ import Container from '@material-ui/core/Container';
 import Fab from '@material-ui/core/Fab';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 import Zoom from '@material-ui/core/Zoom';
+import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
+import IconButton from '@material-ui/core/IconButton';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     position: 'fixed',
     bottom: theme.spacing(2),
     right: theme.spacing(2),
+  },
+  menuButton: {
+    marginRight: theme.spacing(2),
   },
 }));
 
@@ -51,11 +56,22 @@ ScrollTop.propTypes = {
 
 
 export default function Wrapper (props) {
+  const classes = useStyles();
+
   return (
     <React.Fragment>
       <CssBaseline />
       <AppBar>
         <Toolbar>
+          {props.goBack && (<IconButton
+            edge="start"
+            className={classes.menuButton}
+            color="inherit"
+            aria-label="open drawer"
+            onClick={() => props.goBack()}
+          >
+            <ArrowBackIosIcon />
+          </IconButton>)}
           <Typography variant="h6">Beers</Typography>
         </Toolbar>
       </AppBar>
