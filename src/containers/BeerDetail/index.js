@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import HttpService from '../../utils/HttpService'
 import Load from '../../components/load'
 import Wrapper from '../../components/wrapper';
+import './beerDetail.css'
 
 class BeerDetail extends Component {
 
@@ -17,7 +18,7 @@ class BeerDetail extends Component {
   async getUserData() {
     try {
       const data = await HttpService.get(`beers/${this.props.match.params.beerId}`)
-      this.setState({ beer: data })
+      this.setState({ beer: data[0] })
     } catch (error) {
       console.error(error)
     } finally {
@@ -42,7 +43,42 @@ class BeerDetail extends Component {
             <>
               <Wrapper goBack={() => this.handleClickBack()}>
                 <div className="container">
-                  <div className="m-1">
+                  <div className="productDetail">
+
+                    <div className="productImage"  style ={ { backgroundImage: "url("+image_url+")" } }></div>
+                    <h1 className="title">{name}</h1>
+                    <h3 className="subtitle">{tagline}</h3>
+                    <span className="firstBrewed">{"First Brewed " + first_brewed}</span>
+                    <p>{description}</p>
+
+                    <p><strong>{'INGREDIENTES'}</strong></p>
+
+                    <div>
+                      <span><strong>{'Malte'}</strong></span>
+                      <ul>
+                        {ingredients.malt.map(({name, amount}) => (
+                          <li key={name}>
+                            {amount.value + ' ' + amount.unit + ' of ' + name}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    <div>
+                      <span><strong>{'Lúpulo'}</strong></span>
+                      <ul>
+                        {ingredients.hops.map(({name, amount}) => (
+                          <li key={name}>
+                            {amount.value + ' ' + amount.unit + ' of ' + name}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    <div>
+                        <span><strong>{'Levedura: ' }</strong>{ingredients.yeast}</span>
+                    </div>
+
                     
                   </div>
                 </div>
