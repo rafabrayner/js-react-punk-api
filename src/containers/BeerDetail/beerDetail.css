@@ -1,13 +1,14 @@
 .productImage {
-    width: 200px;
     height: 200px;
     background-size: contain;
     background-repeat: no-repeat;
-    background-position: left;
+    background-position: center;
 }
 
 .productDetail {
-    width: 100%;
+    max-width: 500px;
+    padding: 1rem;
+    background-color: rgba(0, 0, 0, 0.03);
 }
 
 .productDetail .title{
