@@ -18,7 +18,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "docker": "docker build -t rafaelbrayner/reactjs_nginx:1.0.0 .",
+    "react-docker": "docker run -d -p 3000:80 rafaelbrayner/reactjs_nginx:1.0.0"
   },
   "eslintConfig": {
     "extends": "react-app"

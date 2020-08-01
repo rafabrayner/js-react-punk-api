@@ -4,6 +4,15 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
+### `npm run docker`
+
+Runs the docker build image
+
+### `npm run react-docker`
+
+Build the project and runs it in a docker container.<br />
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
 ### `npm start`
 
 Runs the app in the development mode.<br />
